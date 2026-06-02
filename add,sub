@@ -1,0 +1,20 @@
+class Complex:
+    def __init__(self, x,y):
+        self.x=x
+        self.y=y
+    def __add__(self,other):
+        real=self.x+other.x
+        imag=self.y+other.y
+        print("Real:",real)
+        print("Imaginary:",imag)
+    def __sub__(self,other):
+        real=self.x-other.x
+        imag=self.y-other.y
+        print("Real:",real)
+        print("Imaginary:",imag)
+x1,y1=map(int,input("Enter the real and imaginary part:").split())
+x2,y2=map(int,input("Enter the real and imaginary part:").split())
+c1=Complex(x1,y1)
+c2=Complex(x2,y2)
+c1+c2
+c1-c2
