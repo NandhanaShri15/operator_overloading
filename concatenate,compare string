@@ -1,0 +1,15 @@
+class Word:
+    def __init__(self,a):
+        self.a=a
+    def __add__(self,other):
+        res=self.a+other.a
+        print("Concatenation:",res)
+    def __eq__(self,other):
+        res=self.a==other.a
+        print("Equality:",res)
+s1=input("Enter 1st String:")
+s2=input("Enter 2nd String:")
+w1=Word(s1)
+w2=Word(s2)
+w1+w2
+w1==w2
