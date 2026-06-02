@@ -1,0 +1,32 @@
+class polynomial:
+    def __init__(self,coeff):
+        self.coeff=coeff
+    def __mul__(self,var):
+        r=[[0]*len(var.coeff)for i in range(len(self.coeff))]
+        for i in range(len(self.coeff)):
+            for j in range(len(var.coeff)):
+                r[i][j]=self.coeff[i]*var.coeff[j]
+        if len(self.coeff)>len(var.coeff):
+            degree=len(self.coeff)
+        else:
+            degree=len(var.coeff)
+        t=0
+        c=0
+        for i in range(len(self.coeff)):
+            for j in range(len(var.coeff)):
+                if i==0 and j==0:
+                    print(r[i][j],"x^",degree,"+",end="")
+                    degree-=1
+                elif i==len(self.coeff)-1 and j==len(var.coeff)-1:
+                    print(r[i][j])
+                else:
+                    t+=r[i][j]
+                    c+=1
+                    if c==2:
+                        print(t,"x^",degree,"+",end="")
+                        degree-=1
+                        c=0
+                        t=0
+a1=polynomial(list(map(int,input("Enter the coefficients of the polynomial...").split())))
+a2=polynomial(list(map(int,input("Enter the coefficients of the polynomial...").split())))
+a1*a2
