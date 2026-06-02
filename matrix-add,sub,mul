@@ -1,0 +1,54 @@
+class matrix:
+    def __init__(self,mat,r,c):
+        self.mat=mat
+        self.r=r
+        self.c=c
+    def __add__(self,var):
+        r=[[0]*var.c for i in range(var.r)]
+        if self.r==var.r and self.c==var.c:
+            for i in range(self.r):
+                for j in range(self.c):
+                    r[i][j]=self.mat[i][j]+var.mat[i][j]
+            for i in r:
+                print(i)
+        else:
+            print("Addition not possible")
+    def __sub__(self,var):
+        r=[[0]*var.c for i in range(var.r)]
+        if self.r==var.r and self.c==var.c:
+            for i in range(self.r):
+                for j in range(self.c):
+                    r[i][j]=self.mat[i][j]-var.mat[i][j]
+            for i in r:
+                print(i)
+        else:
+            print("Subtraction not possible")
+    def __mul__(self,var):
+        if self.c!=var.r:
+            print("Multiplication not possible")
+        else:
+            r=[[0]*var.c for _ in range(self.r)]
+            for i in range(self.r):
+                for j in range(var.c):
+                    for k in range(self.c):
+                        r[i][j]+=self.mat[i][k]*var.mat[k][j]
+            for i in r:
+                print(i)
+r1,c1=map(int,input("Enter the no of rows and columns of the first matrix...").split())
+r2,c2=map(int,input("Enter the no of rows and columns of the second matrix...").split())
+a=[]
+b=[]
+print("1st matrix:")
+for i in range(r1):
+    a.append(list(map(int,input("Row %i elements:"%(i+1)).split())))
+print("2nd matrix:")
+for i in range(r2):
+    b.append(list(map(int,input("Row %i elements:"%(i+1)).split())))
+m1=matrix(a,r1,c1)
+m2=matrix(b,r2,c2)
+print("-----ADDITION-----")
+m1+m2
+print("-----SUBTRACTION-----")
+m1-m2
+print("-----MULTIPLICATION-----")
+m1*m2
